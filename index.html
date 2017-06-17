@@ -1,0 +1,180 @@
+<style>
+.io {
+	width: 350px;
+	height: 1em;
+	margin: 0;
+	padding: 0 0.1em 0.1em 0;
+}
+
+#output {
+	background-color: rgb(143, 238, 145);
+}
+
+#input {
+	height: 1.5em;
+}
+</style>
+
+<script>
+function decodeHTML (code) {
+	var e = document.createElement ('div');
+	e.innerHTML = code;
+
+	return e.childNodes[0].nodeValue;
+}
+
+function map (letter) {
+	switch (letter) {
+		case 'a':
+			return decodeHTML ('&#592;');
+
+		case 'b':
+			return 'q';
+
+		case 'c':
+			return decodeHTML ('&#596;');
+
+		case 'd':
+			return 'p';
+
+		case 'e':
+			return decodeHTML ('&#477;');
+
+		case 'f':
+			return decodeHTML ('&#607;');
+
+		case 'g':
+			return decodeHTML ('&#387;');
+
+		case 'h':
+			return decodeHTML ('&#613;');
+
+		case 'i':
+			return decodeHTML ('&#7433;');
+
+		case 'j':
+			return decodeHTML ('&#638;');
+
+		case 'k':
+			return decodeHTML ('&#670;');
+
+		case 'm':
+			return decodeHTML ('&#623;');
+
+		case 'n':
+			return 'u';
+
+		case 'p':
+			return 'd';
+
+		case 'q':
+			return 'b';
+
+		case 'r':
+			return decodeHTML ('&#633;');
+
+		case 't':
+			return decodeHTML ('&#647;');
+
+		case 'u':
+			return 'n';
+
+		case 'v':
+			return decodeHTML ('&#652;');
+
+		case 'w':
+			return decodeHTML ('&#653;');
+
+		case 'y':
+			return decodeHTML ('&#654;');
+
+		case 'A':
+			return decodeHTML ('&#8704;');
+
+		case 'B':
+			return decodeHTML ('&#x10412');
+
+		case 'C':
+			return decodeHTML ('&#390;');
+
+		case 'D':
+			return decodeHTML ('&#x25d6;');
+
+		case 'E':
+			return decodeHTML ('&#398;');
+
+		case 'F':
+			return decodeHTML ('&#8498;');
+
+		case 'G':
+			return decodeHTML ('&#x2141;');
+
+		case 'J':
+			return decodeHTML ('&#383;');
+
+		case 'K':
+			return decodeHTML ('&#x22ca;');
+
+		case 'L':
+			return decodeHTML ('&#741;');
+
+		case 'M':
+			return 'W';
+
+		case 'P':
+			return decodeHTML ('&#1280;');
+
+		case 'Q':
+			return decodeHTML ('&#x038c;');
+
+		case 'R':
+			return decodeHTML ('&#x1d1a;');
+
+		case 'T':
+			return decodeHTML ('&#x22a5;');
+
+		case 'U':
+			return decodeHTML ('&#x2229;');
+
+		case 'V':
+			return decodeHTML ('&#x1d27');
+
+		case 'W':
+			return 'M';
+
+		case 'Y':
+			return decodeHTML ('&#x0059;');
+
+		default:
+			return letter;
+	}
+}
+
+window.onload = function () {
+	var io = document.getElementById ('input'),
+		out = document.getElementById ('output');
+
+	io.addEventListener ('keyup', function (e) {
+		var text = io.value,
+			output = '';
+
+		for (var i = text.length - 1; i >= 0; i--)
+			output += map (text.charAt (i));
+
+		out.innerHTML = output;
+	});
+};
+
+
+</script>
+
+<body>
+	<h1>More Advanced Password Encryptor</h1>
+
+	Input the password you want to encrypt:<br>
+	<input id="input" class="io"></input>
+	<br>
+	<br>
+	More safe and encrypted password:
+	<p id="output" class="io"></p>
+</body>
